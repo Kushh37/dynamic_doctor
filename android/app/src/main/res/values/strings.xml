@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dynamic Doctor</string>
+
+    
+   <string name="facebook_app_id">351157850069853</string>
+<string name="fb_login_protocol_scheme">fb351157850069853</string>
+
+
+
+
+
+    
+</resources>

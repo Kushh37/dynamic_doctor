@@ -1,0 +1,92 @@
+{
+    "View_Doctors": "डॉक्टरों को देखें",
+    "Send_Doctors": "डाक्टरों को भेजो",
+    "Order_Medicine": "आदेश चिकित्सा",
+    "Browse_Hospitals": "पास की अस्पताल",
+    "Nearby_Pharmacy": "पास की फार्मेसी",
+    "Buy_Products": "उत्पाद खरीदें",
+
+    "CALL_DOCTOR": "कॉल डॉक्टर",
+    "Book_Appointment": "बुक अपॉइंटमेंट",
+
+    "Total_Experience": "टोटल एक्सपीरियंस",
+    "Total_Rating": "टोटल रेटिंग",
+    "registration_Number" : "रजिस्ट्रेशन नंबर",
+    "Info": "इन्फो",
+    "Experience": "एक्सपीरियंस",
+    "Reviews": "रेविएवस",
+
+    "Available_Timing": "अवेलेबल टाइमिंग",
+    "Submit": "सबमिट",
+
+    "Billing_Details": "बिलिंग डिटेल्स",
+    "Full_Name": "फुल नाम",
+    "Gender": "जेंडर ",
+    "Age":"उम्र",
+    "Phone":"फ़ोन",
+    "Street_Address": "स्ट्रीट एड्रेस",
+    "Street_Address_2": "स्ट्रीट एड्रेस 2",
+    "City":"शहर",
+    "Pincode": "पिन कोड",
+    "Additional_Information": "अतिरिक्त जानकारी",
+    "Symptoms": "लक्षण",
+    "Your_Orders": "तुम्हारे ऑर्डर",
+    "Timing": "समय",
+    "Total": "संपूर्ण",
+    "Place_Order": "प्लेस आर्डर",
+
+    "Thank_You": "धन्यवाद",
+    "Your_Appointment_has_been_Created": "आपका अपॉइंटमेंट बन गया है",
+    "For_any_inconvenience_contact_us":"किसी भी असुविधा के लिए हमसे संपर्क करें",
+
+    "Book_a_Doctor": "बुक डॉक्टर ",
+    "Name": "नाम",
+    "Phone_No": "फ़ोन",
+    "Address":"पता",
+    "Select_Your_Type": "अपने प्रकार का चयन करें",
+    "More_Details": "अधिक जानकारी",
+    "NEXT": "अगला",
+
+    "Booking_Successful": "बुकिंग सफल",
+    "We_will_be_sending_a_confirmation_shortly":"हम शीघ्र ही एक पुष्टिकरण भेजेंगे",
+
+    "Home": "होम",
+    "Edit_Profile": "एडिट प्रोफाइल",
+    "Call_History": "कॉल इतिहास",
+    "Send_Doctor_History": "डॉक्टर इतिहास भेजें",
+    "Appointments": "नियुक्ति",
+    "Previous_Prescriptions": "पिछले नुस्खे",
+    "Medicine_Order_History": "मेडिसिन ऑर्डर हिस्ट्री",
+    "Settings": "सेटिंग्स",
+
+    "Email": "ईमेल",
+    "Save": "सेव ",
+
+    "About_Us": "हमारे बारे में",
+    "Privacy_Policy": "गोपनीयता नीति",
+    "Terms&Condition": "नियम व शर्त",
+    "Refund_Policy": "भुगतान वापसी की नीति",
+    "Contact_Us": "संपर्क करें",
+    "Report": "शिकायत करना",
+
+    "Currently_Unavailable": "वर्तमान में अनुपलब्ध",
+    "Booked": "बुक्ड",
+    "Online": "ऑनलाइन",
+    "All": "सभी",
+    "Help": "मदद",
+    "Search_Doctors" : "डॉक्टरों को खोजें",
+
+    "Write_Review":"समीक्षा लिखो",
+
+    "New_Consultation": "नया परामर्श",
+    "Followup_Consultation": "अनुवर्ती परामर्श",
+    "Show_Reports" : "रिपोर्ट दिखाएं",
+    "Others": "अन्य",
+
+    "Field_must_not_be_empty": "फ़ील्ड खाली नहीं होनी चाहिए",
+
+    "Prescription": "पर्चे",
+    "Capture_and_upload_your_Prescription": "अपना नुस्खा कैप्चर करें और अपलोड करें",
+    "Upload_your_prescription_in_image_doc_pdf_format_only": "अपने नुस्खे को छवि दस्तावेज़ पीडीएफ प्रारूप में ही अपलोड करें",
+    "Scan_Capture_Upload": "स्कैन कैप्चर अपलोड"
+}

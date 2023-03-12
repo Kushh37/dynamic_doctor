@@ -1,0 +1,99 @@
+{
+    "View_Doctors": "View Doctors",
+    "Send_Doctors": "Send Doctors",
+    "Order_Medicine": "Order Medicine",
+    "Browse_Hospitals": "Browse Hospitals",
+    "Nearby_Pharmacy": "Nearby Pharmacy",
+    "Buy_Products": "Buy Products",
+
+    "CALL_DOCTOR": "CALL DOCTOR",
+    "Book_Appointment": "Book Appointment",
+
+    "Total_Experience": "Total Experience",
+    "Total_Rating": "Total Rating",
+    "registration_Number" : "registration Number",
+    "Info": "Info",
+    "Experience": "Experience",
+    "Reviews": "Reviews",
+
+    "Available_Timing": "Available Timing",
+    "Submit" : "Submit",
+
+    "Billing_Details": "Billing Details",
+    "Full_Name": "Full Name",
+    "Gender": "Gender",
+    "Age":"Age",
+    "Phone":"Phone",
+    "Street_Address": "Street Address",
+    "Street_Address_2": "Street Address 2",
+    "City":"City",
+    "Pincode": "Pincode",
+    "Additional_Information": "Additional Information",
+    "Symptoms": "Symptoms",
+    "Your_Orders": "Your Orders",
+    "Timing": "Timing",
+    "Total": "Total",
+    "Place_Order": " Place Order",
+
+    "Thank_You": "Thank You!",
+    "Your_Appointment_has_been_Created": "Your Appointment has been Created",
+    "For_any_inconvenience_contact_us":"For any inconvenience contact us. ",
+
+    "Book_a_Doctor": "Book a Doctor",
+    "Name": "Name*",
+    "Phone_No": "Phone No.*",
+    "Address":"Address*",
+    "Select_Your_Type": "Select Your Type",
+    "More_Details": "More Details",
+    "NEXT": "NEXT",
+
+    "Booking_Successful": "Booking Successful",
+    "We_will_be_sending_a_confirmation_shortly":"We will be sending a\n confirmation shortly",
+
+    "Home": "Home",
+    "Edit_Profile": "Edit Profile",
+    "Call_History": "Call History",
+    "Send_Doctor_History": "Send Doctor History",
+    "Appointments": "Appointments",
+    "Previous_Prescriptions": "Previous Prescriptions",
+    "Medicine_Order_History": "Medicine Order History",
+    "Settings": "Settings",
+
+    "Email": "Email",
+    "Save": "Save",
+
+    "About_Us": "About Us",
+    "Privacy_Policy": "Privacy Policy",
+    "Terms&Condition": "Terms & Condition",
+    "Refund_Policy": "Refund Policy",
+    "Contact_Us": "Contact Us",
+    "Report": "Report",
+
+    "Currently_Unavailable": "Currently Unavailable",
+    "Booked": "Booked",
+    "Online": "Online",
+    "All": "All",
+    "Help": "Help",
+    "Search_Doctors" : "Search Doctors",
+
+    "Write_Review": "Write Review",
+
+    "New_Consultation": "New Consultation",
+    "Followup_Consultation": "Followup Consultation",
+    "Show_Reports" : "Show Reports",
+    "Others": "Others",
+
+    "Field_must_not_be_empty": "Field must not be empty.",
+
+    "Prescription": "Prescription",
+    "Capture_and_upload_your_Prescription": "Capture and upload your Prescription",
+    "Upload_your_prescription_in_image_doc_pdf_format_only": "Upload your prescription in image, doc, pdf format only",
+    "Scan_Capture_Upload": "Scan | Capture | Upload"
+    
+
+    
+
+
+
+
+}
