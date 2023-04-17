@@ -62,7 +62,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => LanguageController()),
       ],
       child: EasyLocalization(
-          supportedLocales: const [Locale('en', 'US'), Locale('hi', 'IN')],
+          supportedLocales: const [Locale('en', 'US'), Locale('bn', 'BD')],
           path: 'assets/translations',
           startLocale: const Locale('en', 'US'),
           fallbackLocale: const Locale('en', 'US'),

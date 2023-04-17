@@ -162,7 +162,7 @@ class _UploadedPrescriptionState extends State<UploadedPrescription>
                   ),
                   child: Center(
                     child: Text(
-                      "Hindi",
+                      "Bengali",
                       style: GoogleFonts.raleway(
                           fontWeight: FontWeight.w600,
                           fontSize: height * 0.02,

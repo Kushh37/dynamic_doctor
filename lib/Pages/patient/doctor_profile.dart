@@ -276,7 +276,7 @@ class _DoctorProfileState extends State<DoctorProfile>
               ),
               GestureDetector(
                 onTap: () {
-                  context.locale = const Locale('hi', 'IN');
+                  context.locale = const Locale('bn', 'BD');
                   langHindi = true;
                   languageController.onLanguageChanged();
                   // languageHindi(context, width, height);
@@ -290,7 +290,7 @@ class _DoctorProfileState extends State<DoctorProfile>
                   ),
                   child: Center(
                     child: Text(
-                      "Hindi",
+                      "Bengali",
                       style: GoogleFonts.raleway(
                           fontWeight: FontWeight.w600,
                           fontSize: height * 0.02,
@@ -770,7 +770,7 @@ class _DoctorProfileState extends State<DoctorProfile>
                     Container(
                       padding: EdgeInsets.only(right: width * 0.03),
                       child: Text(
-                        "Fees: ₹${widget.price}",
+                        "Fees: ৳${widget.price}",
                         style: GoogleFonts.raleway(
                             fontWeight: FontWeight.w600,
                             fontSize: width * 0.04,

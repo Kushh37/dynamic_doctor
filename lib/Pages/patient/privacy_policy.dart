@@ -151,7 +151,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen>
                     ),
                     child: Center(
                       child: Text(
-                        "Hindi",
+                        "Bengali",
                         style: GoogleFonts.raleway(
                             fontWeight: FontWeight.w600,
                             fontSize: height * 0.02,

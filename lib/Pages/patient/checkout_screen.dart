@@ -98,40 +98,26 @@ class _CheckOutScreenState extends State<CheckOutScreen>
         initializer: SSLCommerzInitialization(
       //Use the ipn if you have valid one, or it will fail the transaction.
       //   ipn_url: "www.ipnurl.com",
-      multi_card_name: 'visa,master,bkash',
+      multi_card_name: 'multicard',
       currency: SSLCurrencyType.BDT,
       product_category: "Consultancy",
       sdkType: SSLCSdkType.TESTBOX,
-      store_id: 'mrhealerhslive',
-      store_passwd: '61371C2BAF4AE37538',
+      store_id: storeId,
+      store_passwd: storePassword,
       total_amount: price,
       tran_id: "1231321321321312",
     ));
-    sslcommerz
-        .addEMITransactionInitializer(
-            sslcemiTransactionInitializer: SSLCEMITransactionInitializer(
-                emi_options: 1, emi_max_list_options: 3, emi_selected_inst: 2))
-        .addShipmentInfoInitializer(
-            sslcShipmentInfoInitializer: SSLCShipmentInfoInitializer(
-                shipmentMethod: "yes",
-                numOfItems: 5,
-                shipmentDetails: ShipmentDetails(
-                    shipAddress1: "Ship address 1",
-                    shipCity: "Faridpur",
-                    shipCountry: "Bangladesh",
-                    shipName: "Ship name 1",
-                    shipPostCode: "7860")))
-        .addCustomerInfoInitializer(
-            customerInfoInitializer: SSLCCustomerInfoInitializer(
-                customerName: _nameController.text,
-                customerEmail: _email,
-                customerAddress1: _address1Controller.text,
-                customerAddress2: _address2Controller.text,
-                customerCity: _cityController.text,
-                customerPostCode: _pinController.text,
-                customerState: "Gujarat",
-                customerCountry: "India",
-                customerPhone: _phoneController.text));
+    sslcommerz.addCustomerInfoInitializer(
+        customerInfoInitializer: SSLCCustomerInfoInitializer(
+            customerName: _nameController.text,
+            customerEmail: _email,
+            customerAddress1: _address1Controller.text,
+            customerAddress2: _address2Controller.text,
+            customerCity: _cityController.text,
+            customerPostCode: _pinController.text,
+            customerState: "Gujarat",
+            customerCountry: "India",
+            customerPhone: _phoneController.text));
     // sslcommerz.payNow();
 
     var result = await sslcommerz.payNow();
@@ -992,7 +978,7 @@ class _CheckOutScreenState extends State<CheckOutScreen>
                                   ),
                                   child: Center(
                                     child: Text(
-                                      '₹${widget.price}',
+                                      '৳${widget.price}',
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.raleway(
                                           fontWeight: FontWeight.bold,
@@ -1031,7 +1017,7 @@ class _CheckOutScreenState extends State<CheckOutScreen>
                                   ),
                                   child: Center(
                                     child: Text(
-                                      '₹${widget.price}',
+                                      '৳${widget.price}',
                                       textAlign: TextAlign.center,
                                       style: GoogleFonts.raleway(
                                           fontWeight: FontWeight.bold,

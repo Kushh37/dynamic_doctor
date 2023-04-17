@@ -1,0 +1,96 @@
+{
+    "View_Doctors": "ডাক্তার দেখান",
+    "Send_Doctors": "ডাক্তার পাঠান",
+    "Order_Medicine": "ঔষধ  অর্ডার করুন",
+    "Browse_Hospitals": "হসপিটাল খুঁজুন",
+    "Nearby_Pharmacy": "ফার্মাসি খুঁজুন",
+    "Buy_Products": "প্রোডাক্ট অর্ডার করুন",
+
+    "CALL_DOCTOR": "ডাক্তার কল করুন",
+    "Book_Appointment": "এপোয়েন্টমেন্ট বুক করুন",
+
+    "Total_Experience": "সর্বমোট অভিজ্ঞতা",
+    "Total_Rating": "রেটিং",
+    "BMDC_Number" : "Bবিএমডিসি নাম্বার",
+    "Info": "তথ্য",
+    "Experience": "অভিজ্ঞতা",
+    "Reviews": "মতামত",
+
+    "Available_Timing": "সময় নির্বাচন করুন",
+    "Submit": "প্রবেশ করুন",
+
+    "Billing_Details": "বিলিং তথ্য দিন",
+    "Full_Name": "পূর্ণ নাম",
+    "Gender": "লিঙ্গ",
+    "Age":"বয়স",
+    "Phone":"মোবাইল",
+    "Street_Address": "ঠিকানা",
+    "Street_Address_2": "বিকল্প ঠিকানা",
+    "City":"শহর",
+    "Pincode": "পোস্ট কোড",
+    "Additional_Information": "অন্যান্য তথ্য",
+    "Symptoms": "লক্ষণ",
+    "Your_Orders": "আপনার অর্ডার",
+    "Timing": "সময় মূল্য",
+    "Total": "মোট",
+    "Place_Order": "অর্ডার করুন",
+
+    "Thank_You": "ধন্যবাদ",
+    "Your_Appointment_has_been_Created": "আপনার এপোয়েন্টমেন্ট সম্পন্ন হয়েছে",
+    "For_any_inconvenience_contact_us":"যে কোন সমস্যায় যোগাযোগ করুন",
+
+    "Book_a_Doctor": "ডাক্তার বুক করুন",
+    "Name": "নাম*",
+    "Phone_No": "মোবাইল নাম্বার*",
+    "Address":"ঠিকানা*",
+    "Select_Your_Type": "সেবার ধরন বাছাই করুন",
+    "More_Details": "বিস্তারিত লিখুন",
+    "NEXT": "পরবর্তী",
+
+    "Booking_Successful": "বুকিং সম্পন্ন হয়েছে",
+    "We_will_be_sending_a_confirmation_shortly":"শিঘ্রই আমরা আপনাকে নিশ্চিত করবোফিরে যান",
+
+    "Home": "হোম",
+    "Edit_Profile": "ইডিট  প্রোফাইল",
+    "Call_History": "কল ইতিহাস",
+    "Send_Doctor_History": "ডাক্তার নিশ্চিত করুন",
+    "Appointments": "এপোয়েন্টমেন্ট নিন",
+    "Previous_Prescriptions": "প্রেসক্রিপশন",
+    "Medicine_Order_History": "মেডিসিন অর্ডার ইতিহাস",
+    "Settings": "সেটিংস",
+
+    "Email": "ইমেইল",
+    "Save": "সেভ করুন",
+
+    "About_Us": "আমাদের সম্পর্কে জানুন",
+    "Privacy_Policy": "গোপনীয়তা নীতি",
+    "Terms&Condition": "বিধি - নিষেধ এবং শর্তাবলী",
+    "Refund_Policy": "ফেরত নীতিমালা",
+    "Contact_Us": "যোগাযোগ করুন",
+    "Report": "অভিযোগ করুন",
+
+    "Currently_Unavailable": "এই মূহুর্তে ব্যস্ত আছেন",
+    "Booked": "পূর্বে বুক করা হয়েছে",
+    "Online": "অনলাইন",
+    "All": "সব দেখুন",
+    "Help": "সাহায্য",
+    "Search_Doctors" : " ডাক্তার  খুঁজুন ",
+
+    "Write_Review":"মন্তব্য লিখুন",
+
+    "New_Consultation": "নতুন পরামর্শ",
+    "Followup_Consultation": "পূর্বের পরামর্শ",
+    "Show_Reports" : "রিপোর্ট দেখান",
+    "Others": "অন্নান্য",
+
+    "Field_must_not_be_empty": "সবকটি ঘর পূরণ করতে হবে",
+
+    "Prescription": "প্রেস্ক্রিপশন",
+    "Capture_and_upload_your_Prescription": " ছবি তুলুন এবং প্রেস্ক্রিপশন আপলোড করুন",
+    "Upload_your_prescription_in_image_doc_pdf_format_only": "প্রেস্ক্রিপশন ছবি | ডকুমেন্ট | পিডিএফ আকারে আপলোড করুন",
+    "Scan_Capture_Upload": "স্কেন করুন/ছবি তুলুন/আপলোড করুন"
+
+    
+    
+
+}

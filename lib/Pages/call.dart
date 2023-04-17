@@ -27,6 +27,7 @@ import 'package:progressive_image/progressive_image.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import 'package:url_launcher/url_launcher.dart';
+import 'package:zego_uikit_prebuilt_call/zego_uikit_prebuilt_call.dart';
 
 class CallPage extends StatefulWidget {
   final String patientCity;
@@ -68,24 +69,6 @@ class _CallPageState extends State<CallPage>
     with SingleTickerProviderStateMixin {
   final GlobalKey webViewKey = GlobalKey();
 
-  InAppWebViewController? webViewController;
-  InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
-      crossPlatform: InAppWebViewOptions(
-        useShouldOverrideUrlLoading: true,
-        mediaPlaybackRequiresUserGesture: false,
-      ),
-      android: AndroidInAppWebViewOptions(
-        useHybridComposition: true,
-      ),
-      ios: IOSInAppWebViewOptions(
-        allowsInlineMediaPlayback: true,
-      ));
-
-  late PullToRefreshController pullToRefreshController;
-  String url = "";
-  double progress = 0;
-  final urlController = TextEditingController();
-
   @override
   void initState() {
     super.initState();
@@ -110,32 +93,6 @@ class _CallPageState extends State<CallPage>
     if (widget.route == "patient") {
       _getData();
     }
-    // if (widget.route == "call") {
-    //   ScaffoldMessenger.of(context).showMaterialBanner(MaterialBanner(
-    //       content:
-    //           Text("Do not leave the call until your consultancy is over."),
-    //       actions: [
-    //         GestureDetector(
-    //             onTap: () {
-    //               Navigator.of(context).pop();
-    //             },
-    //             child: Icon(Icons.cancel))
-    //       ]));
-    // }
-
-    pullToRefreshController = PullToRefreshController(
-      options: PullToRefreshOptions(
-        color: Colors.blue,
-      ),
-      onRefresh: () async {
-        if (Platform.isAndroid) {
-          webViewController?.reload();
-        } else if (Platform.isIOS) {
-          webViewController?.loadUrl(
-              urlRequest: URLRequest(url: await webViewController?.getUrl()));
-        }
-      },
-    );
   }
 
   @override
@@ -724,8 +681,8 @@ class _CallPageState extends State<CallPage>
       currency: SSLCurrencyType.BDT,
       product_category: "Consultancy",
       sdkType: SSLCSdkType.TESTBOX,
-      store_id: 'vedas612dadfd20e40',
-      store_passwd: 'vedas612dadfd20e40@ssl',
+      store_id: storeId,
+      store_passwd: storePassword,
       total_amount: price,
       tran_id: "1231321321321312",
     ));
@@ -826,438 +783,303 @@ class _CallPageState extends State<CallPage>
     // "https://humbingo.com/videocall/doctor-appointment/?doctorid=${widget.doctorId}";
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return MaterialApp(
-      home: WillPopScope(
-        onWillPop: () async {
-          webViewController!.goBack();
-          return false;
-        },
-        child: Scaffold(
-          drawer: Drawers(),
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            iconTheme: const IconThemeData(color: dark),
-            centerTitle: true,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  height: width * 0.07,
-                  width: width * 0.2,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
+    return Scaffold(
+      drawer: Drawers(),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        iconTheme: const IconThemeData(color: dark),
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: width * 0.07,
+              width: width * 0.2,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: lightpurple2,
+              ),
+              child: Center(
+                child: Text(
+                  "English",
+                  style: GoogleFonts.raleway(
+                      fontWeight: FontWeight.w600,
+                      fontSize: height * 0.02,
+                      color: Colors.white),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                languageHindi(context, width, height);
+              },
+              child: Container(
+                height: width * 0.07,
+                width: width * 0.2,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: dark,
+                ),
+                child: Center(
+                  child: Text(
+                    "Bengali",
+                    style: GoogleFonts.raleway(
+                        fontWeight: FontWeight.w600,
+                        fontSize: height * 0.02,
+                        color: Colors.white),
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (_) => const ChatSupportScreen()));
+            },
+            child: Image.asset(
+              "assets/b1.png",
+              width: width * 0.05,
+            ),
+          ),
+          SizedBox(
+            width: width * 0.02,
+          ),
+          GestureDetector(
+            onTap: () {
+              Alert(
+                context: context,
+                type: AlertType.success,
+                // title: "RFLUTTER ALERT",
+                desc: "Do you want to make a phone call to our support?",
+                buttons: [
+                  DialogButton(
+                    onPressed: () {
+                      _makePhoneCall("06352192149", true);
+                    },
                     color: lightpurple2,
-                  ),
-                  child: Center(
-                    child: Text(
-                      "English",
-                      style: GoogleFonts.raleway(
-                          fontWeight: FontWeight.w600,
-                          fontSize: height * 0.02,
-                          color: Colors.white),
+                    child: const Text(
+                      "Yes",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                    languageHindi(context, width, height);
-                  },
-                  child: Container(
-                    height: width * 0.07,
-                    width: width * 0.2,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      color: dark,
-                    ),
-                    child: Center(
-                      child: Text(
-                        "Hindi",
-                        style: GoogleFonts.raleway(
-                            fontWeight: FontWeight.w600,
-                            fontSize: height * 0.02,
-                            color: Colors.white),
-                      ),
+                  DialogButton(
+                    onPressed: () => Navigator.pop(context),
+                    color: lightpurple2,
+                    child: const Text(
+                      "No",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
                   ),
-                )
-              ],
-            ),
-            actions: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => const ChatSupportScreen()));
-                },
-                child: Image.asset(
-                  "assets/b1.png",
-                  width: width * 0.05,
-                ),
-              ),
-              SizedBox(
-                width: width * 0.02,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Alert(
-                    context: context,
-                    type: AlertType.success,
-                    // title: "RFLUTTER ALERT",
-                    desc: "Do you want to make a phone call to our support?",
-                    buttons: [
-                      DialogButton(
-                        onPressed: () {
-                          _makePhoneCall("06352192149", true);
-                        },
-                        color: lightpurple2,
-                        child: const Text(
-                          "Yes",
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ),
-                      DialogButton(
-                        onPressed: () => Navigator.pop(context),
-                        color: lightpurple2,
-                        child: const Text(
-                          "No",
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ),
-                    ],
-                  ).show();
-                },
-                child: Image.asset(
-                  "assets/p1.png",
-                  width: width * 0.05,
-                ),
-              ),
-              SizedBox(
-                width: width * 0.03,
-              ),
-            ],
-          ),
-          body: SafeArea(
-            child: Column(
-              children: <Widget>[
-                Expanded(
-                  child: Stack(
-                    children: [
-                      InAppWebView(
-                        key: webViewKey,
-                        initialUrlRequest: URLRequest(
-                          url: Uri.parse(_url),
-                        ),
-                        initialOptions: options,
-                        // pullToRefreshController: pullToRefreshController,
-                        onWebViewCreated: (controller) {
-                          webViewController = controller;
-                        },
-                        onLoadStart: (controller, url) {
-                          setState(() async {
-                            this.url = url.toString();
-                            urlController.text = this.url;
-                          });
-                        },
-                        androidOnPermissionRequest:
-                            (controller, origin, resources) async {
-                          return PermissionRequestResponse(
-                              resources: resources,
-                              action: PermissionRequestResponseAction.GRANT);
-                        },
-                        androidOnGeolocationPermissionsShowPrompt:
-                            (InAppWebViewController controller,
-                                String origin) async {
-                          return GeolocationPermissionShowPromptResponse(
-                              origin: origin, allow: true, retain: true);
-                        },
-                        shouldOverrideUrlLoading:
-                            (controller, navigationAction) async {
-                          var uri = navigationAction.request.url!;
-
-                          if (![
-                            "http",
-                            "https",
-                            "file",
-                            "chrome",
-                            "data",
-                            "javascript",
-                            "about"
-                          ].contains(uri.scheme)) {
-                            if (await canLaunch(url)) {
-                              // Launch the App
-                              await launch(
-                                url,
-                              );
-                              // and cancel the request
-                              return NavigationActionPolicy.CANCEL;
-                            }
-                          }
-
-                          return NavigationActionPolicy.ALLOW;
-                        },
-                        onLoadStop: (controller, url) async {
-                          pullToRefreshController.endRefreshing();
-                          setState(() {
-                            this.url = url.toString();
-                            urlController.text = this.url;
-                          });
-                        },
-                        onLoadError: (controller, url, code, message) {
-                          pullToRefreshController.endRefreshing();
-                        },
-                        onProgressChanged: (controller, progress) {
-                          if (progress == 100) {
-                            pullToRefreshController.endRefreshing();
-                          }
-                          setState(() {
-                            this.progress = progress / 100;
-                            urlController.text = url;
-                          });
-                        },
-                        onUpdateVisitedHistory:
-                            (controller, url, androidIsReload) {
-                          setState(() {
-                            this.url = url.toString();
-                            urlController.text = this.url;
-                          });
-                        },
-                        onConsoleMessage: (controller, consoleMessage) {
-                          // ignore: avoid_print
-                          print(consoleMessage);
-                        },
-                      ),
-                      progress < 1.0
-                          ? LinearProgressIndicator(value: progress)
-                          : Container(),
-                    ],
-                  ),
-                ),
-              ],
+                ],
+              ).show();
+            },
+            child: Image.asset(
+              "assets/p1.png",
+              width: width * 0.05,
             ),
           ),
-          // floatingActionButton: Container(
-          //   // onPressed: () {},
-          //   child: GestureDetector(
-          //     onTap: () {
-          //       widget.route == "patient"
-          //           ? _showPicker(context)
-          //           : widget.route == "call"
-          //               ? _showPicker(context)
-          //               : _showUploadedPictures(context, height, width);
-          //     },
-          //     child: Container(
-          //         alignment: Alignment.center,
-          //         decoration: BoxDecoration(
-          //           borderRadius: BorderRadius.circular(10),
-          //           color: lightestpurple,
-          //         ),
-          //         height: width * 0.1,
-          //         width: width * 0.35,
-          //         child: Text(
-          //           widget.route == "patient"
-          //               ? "Upload Files"
-          //               : widget.route == "call"
-          //                   ? "Upload Files"
-          //                   : "See Files",
-          //           style: GoogleFonts.raleway(
-          //               fontWeight: FontWeight.w500, color: dark),
-          //         )),
-          //   ),
-          // ),
-          bottomNavigationBar: Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () async {
-                      if (widget.route == "doctor") {
-                        await FirebaseFirestore.instance
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .set({
-                          "status": "AVAILABLE",
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("Doctor")
-                            .doc(widget.doctorSpeciality)
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .set({
-                          "status": "AVAILABLE",
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("BOOKING")
-                            .doc(widget.bookingId)
-                            .set({
-                          "status": "completed",
-                          "prescriptionStatus": "remain"
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .collection("BOOKINGS")
-                            .doc(widget.bookingId)
-                            .set({
-                          "status": "completed",
-                          "prescriptionStatus": "remain"
-                        }, SetOptions(merge: true));
+          SizedBox(
+            width: width * 0.03,
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: ZegoUIKitPrebuiltCall(
+          appID: videoAppId,
+          appSign: videoAppSign,
+          userID: widget.route == "doctor" ? widget.doctorId : widget.patientid,
+          userName: "user_${widget.route}" == "doctor"
+              ? widget.doctorName
+              : widget.patientName,
+          callID: widget.patientid,
+          config: ZegoUIKitPrebuiltCallConfig.oneOnOneVideoCall()
+            ..onOnlySelfInRoom = (context) {
+              Navigator.of(context).pop();
+            },
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(0.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ElevatedButton.icon(
+                onPressed: () async {
+                  if (widget.route == "doctor") {
+                    await FirebaseFirestore.instance
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .set({
+                      "status": "AVAILABLE",
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("Doctor")
+                        .doc(widget.doctorSpeciality)
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .set({
+                      "status": "AVAILABLE",
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("BOOKING")
+                        .doc(widget.bookingId)
+                        .set({
+                      "status": "completed",
+                      "prescriptionStatus": "remain"
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .collection("BOOKINGS")
+                        .doc(widget.bookingId)
+                        .set({
+                      "status": "completed",
+                      "prescriptionStatus": "remain"
+                    }, SetOptions(merge: true));
 
-                        Navigator.of(context).pushAndRemoveUntil(
-                            MaterialPageRoute(
-                                builder: (context) => GeneratePres(
-                                    doctorSpeciality: widget.doctorSpeciality,
-                                    type: widget.type,
-                                    doctorId: widget.doctorId,
-                                    patientId: widget.patientid,
-                                    patientEmail: widget.patientEmail,
-                                    bookingId: widget.bookingId)),
-                            (route) => false);
-                      } else if (widget.route == "call") {
-                        _sendStatus(
-                            status: "unpaid", prescriptionStatus: "Pending");
-                        sslCommerzGeneralCall(widget.price).whenComplete(() {
-                          _sendStatus(
-                              status: "paid", prescriptionStatus: "Pending");
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                              content: Text(
-                                  "You will find your Prescription in previous Prescription Section.")));
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => const Home()),
-                              (route) => false);
-                        });
-                      } else if (widget.route == "doctorCall") {
-                        await FirebaseFirestore.instance
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .set({
-                          "status": "AVAILABLE",
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("Doctor")
-                            .doc(widget.doctorSpeciality)
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .set({
-                          "status": "AVAILABLE",
-                        }, SetOptions(merge: true));
-                        _sendStatus(
-                            status: "completed", prescriptionStatus: "Pending");
-                        Navigator.of(context).pop();
-                      } else if (widget.route == "doctor" &&
-                          widget.bookingType == "call") {
-                        await FirebaseFirestore.instance
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .set({
-                          "status": "AVAILABLE",
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("Doctor")
-                            .doc(widget.doctorSpeciality)
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .set({
-                          "status": "AVAILABLE",
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("BOOKING")
-                            .doc(widget.bookingId)
-                            .set({
-                          "prescriptionStatus": "Pending",
-                          "status": "unpaid"
-                        }, SetOptions(merge: true));
-                        await FirebaseFirestore.instance
-                            .collection("DOCTORS")
-                            .doc(widget.doctorId)
-                            .collection("BOOKINGS")
-                            .doc(widget.bookingId)
-                            .set({
-                          "prescriptionStatus": "Pending",
-                          "status": "unpaid"
-                        }, SetOptions(merge: true));
-                        Navigator.of(context).pop();
-
-                        // Navigator.of(context).pushAndRemoveUntil(
-                        //     MaterialPageRoute(
-                        //         builder: (context) => GeneratePres(
-                        //             doctorSpeciality: widget.doctorSpeciality,
-                        //             type: widget.type,
-                        //             doctorId: widget.doctorId,
-                        //             patientId: widget.patientid,
-                        //             patientEmail: widget.patientEmail,
-                        //             bookingId: widget.bookingId)),
-                        //     (route) => false);
-
-                      } else {
-                        _sendAgentStatus(
-                            status: "unpaid",
-                            prescriptionStatus: "Pending",
-                            agentId: widget.patientid,
-                            bookingId: widget.bookingId,
-                            doctorId: widget.doctorId);
-                        Navigator.of(context).pop();
-                      }
-                    },
-                    icon: const Icon(Icons.phone),
-                    label: const Text('End Call'),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red, // background
-                      foregroundColor: Colors.white, // foreground
-                    ),
-                  ),
+                    Navigator.of(context).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                            builder: (context) => GeneratePres(
+                                doctorSpeciality: widget.doctorSpeciality,
+                                type: widget.type,
+                                doctorId: widget.doctorId,
+                                patientId: widget.patientid,
+                                patientEmail: widget.patientEmail,
+                                bookingId: widget.bookingId)),
+                        (route) => false);
+                  } else if (widget.route == "call") {
+                    _sendStatus(
+                        status: "unpaid", prescriptionStatus: "Pending");
+                    sslCommerzGeneralCall(widget.price).whenComplete(() {
+                      _sendStatus(
+                          status: "paid", prescriptionStatus: "Pending");
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text(
+                              "You will find your Prescription in previous Prescription Section.")));
+                      Navigator.of(context).pushAndRemoveUntil(
+                          MaterialPageRoute(builder: (context) => const Home()),
+                          (route) => false);
+                    });
+                  } else if (widget.route == "doctorCall") {
+                    await FirebaseFirestore.instance
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .set({
+                      "status": "AVAILABLE",
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("Doctor")
+                        .doc(widget.doctorSpeciality)
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .set({
+                      "status": "AVAILABLE",
+                    }, SetOptions(merge: true));
+                    _sendStatus(
+                        status: "completed", prescriptionStatus: "Pending");
+                    Navigator.of(context).pop();
+                  } else if (widget.route == "doctor" &&
+                      widget.bookingType == "call") {
+                    await FirebaseFirestore.instance
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .set({
+                      "status": "AVAILABLE",
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("Doctor")
+                        .doc(widget.doctorSpeciality)
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .set({
+                      "status": "AVAILABLE",
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("BOOKING")
+                        .doc(widget.bookingId)
+                        .set({
+                      "prescriptionStatus": "Pending",
+                      "status": "unpaid"
+                    }, SetOptions(merge: true));
+                    await FirebaseFirestore.instance
+                        .collection("DOCTORS")
+                        .doc(widget.doctorId)
+                        .collection("BOOKINGS")
+                        .doc(widget.bookingId)
+                        .set({
+                      "prescriptionStatus": "Pending",
+                      "status": "unpaid"
+                    }, SetOptions(merge: true));
+                    Navigator.of(context).pop();
+                  } else {
+                    _sendAgentStatus(
+                        status: "unpaid",
+                        prescriptionStatus: "Pending",
+                        agentId: widget.patientid,
+                        bookingId: widget.bookingId,
+                        doctorId: widget.doctorId);
+                    Navigator.of(context).pop();
+                  }
+                },
+                icon: const Icon(Icons.phone),
+                label: const Text('End Call'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red, // background
+                  foregroundColor: Colors.white, // foreground
                 ),
-                Expanded(
-                  child: ElevatedButton.icon(
-                    onPressed: () => _startAddNewTransaction(context),
-                    icon: const Icon(Icons.person),
-                    label: Text(
-                      widget.route == "patient"
-                          ? 'Doctor Details'
-                          : widget.route == "call"
-                              ? "Doctor Details"
-                              : 'Patient Details',
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: dark, // background
-                      foregroundColor: Colors.white, // foreground
-                    ),
-                  ),
+              ),
+            ),
+            Expanded(
+              child: ElevatedButton.icon(
+                onPressed: () => _startAddNewTransaction(context),
+                icon: const Icon(Icons.person),
+                label: Text(
+                  widget.route == "patient"
+                      ? 'Doctor Details'
+                      : widget.route == "call"
+                          ? "Doctor Details"
+                          : 'Patient Details',
                 ),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      widget.route == "patient"
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: dark, // background
+                  foregroundColor: Colors.white, // foreground
+                ),
+              ),
+            ),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  widget.route == "patient"
+                      ? _showUploadedPicturesPatient(context, height, width)
+                      : widget.route == "call"
                           ? _showUploadedPicturesPatient(context, height, width)
+                          : _showUploadedPictures(context, height, width);
+                },
+                child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: lightestpurple,
+                    ),
+                    height: width * 0.1,
+                    width: width * 0.35,
+                    child: Text(
+                      widget.route == "patient"
+                          ? "Upload Files"
                           : widget.route == "call"
-                              ? _showUploadedPicturesPatient(
-                                  context, height, width)
-                              : _showUploadedPictures(context, height, width);
-                    },
-                    child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: lightestpurple,
-                        ),
-                        height: width * 0.1,
-                        width: width * 0.35,
-                        child: Text(
-                          widget.route == "patient"
                               ? "Upload Files"
-                              : widget.route == "call"
-                                  ? "Upload Files"
-                                  : "See Files",
-                          style: GoogleFonts.raleway(
-                              fontWeight: FontWeight.w500, color: dark),
-                        )),
-                  ),
-                ),
-              ],
+                              : "See Files",
+                      style: GoogleFonts.raleway(
+                          fontWeight: FontWeight.w500, color: dark),
+                    )),
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

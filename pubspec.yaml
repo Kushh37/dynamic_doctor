@@ -81,6 +81,7 @@ dependencies:
   rename: ^2.0.1
   flutter_sslcommerz: ^2.2.2-nullsafety.0
   google_maps_webservice:
+  zego_uikit_prebuilt_call: ^2.0.0
 
 dev_dependencies:
   flutter_test:

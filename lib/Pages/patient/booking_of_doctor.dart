@@ -201,7 +201,7 @@ class _BookingDoctorScreenState extends State<BookingDoctorScreen>
             ),
             GestureDetector(
               onTap: () {
-                context.locale = const Locale('hi', 'IN');
+                context.locale = const Locale('bn', 'BD');
                 langHindi = true;
                 languageController.onLanguageChanged();
                 // languageHindi(context, width, height);
@@ -215,7 +215,7 @@ class _BookingDoctorScreenState extends State<BookingDoctorScreen>
                 ),
                 child: Center(
                   child: Text(
-                    "Hindi",
+                    "Bengali",
                     style: GoogleFonts.raleway(
                         fontWeight: FontWeight.w600,
                         fontSize: height * 0.02,
@@ -485,7 +485,7 @@ class _BookingDoctorScreenState extends State<BookingDoctorScreen>
                     Container(
                       padding: EdgeInsets.only(right: width * 0.03),
                       child: Text(
-                        "Fees: ₹${widget.price} ",
+                        "Fees: ৳${widget.price} ",
                         style: GoogleFonts.raleway(
                             fontWeight: FontWeight.w600,
                             fontSize: width * 0.04,

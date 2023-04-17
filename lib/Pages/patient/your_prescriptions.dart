@@ -86,12 +86,12 @@ class _YourPrescriptionState extends State<YourPrescription>
         initializer: SSLCommerzInitialization(
       //Use the ipn if you have valid one, or it will fail the transaction.
       //   ipn_url: "www.ipnurl.com",
-      multi_card_name: 'visa,master,bkash',
+      multi_card_name: 'multicard',
       currency: SSLCurrencyType.BDT,
       product_category: "Consultancy",
       sdkType: SSLCSdkType.TESTBOX,
-      store_id: 'mrhealerhslive',
-      store_passwd: '61371C2BAF4AE37538',
+      store_id: storeId,
+      store_passwd: storePassword,
       total_amount: total,
       tran_id: "1231321321321312",
     ));
@@ -226,7 +226,7 @@ class _YourPrescriptionState extends State<YourPrescription>
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Qty:  ₹$qty",
+                                        "Qty:  ৳$qty",
                                         style: GoogleFonts.lato(
                                             fontSize: width * 0.04,
                                             fontWeight: FontWeight.w500),
@@ -241,7 +241,7 @@ class _YourPrescriptionState extends State<YourPrescription>
                                     ],
                                   ),
                                   trailing: Text(
-                                    "₹$total",
+                                    "৳$total",
                                     style: GoogleFonts.lato(
                                         fontSize: width * 0.04,
                                         fontWeight: FontWeight.w500),
@@ -332,7 +332,7 @@ class _YourPrescriptionState extends State<YourPrescription>
                   ),
                   child: Center(
                     child: Text(
-                      "Hindi",
+                      "Bengali",
                       style: GoogleFonts.raleway(
                           fontWeight: FontWeight.w600,
                           fontSize: height * 0.02,
@@ -439,7 +439,7 @@ class _YourPrescriptionState extends State<YourPrescription>
                             Container(
                               padding: EdgeInsets.only(right: width * 0.02),
                               child: Text(
-                                "₹${total.toString()}",
+                                "৳${total.toString()}",
                                 style: GoogleFonts.lato(
                                     fontSize: width * 0.05,
                                     color: Colors.white,
